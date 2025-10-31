@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+</head>
+<body>
+
+<h2>Login</h2>
+
+<form id="loginForm">
+  <label>Benutzername:</label><br>
+  <input id="user" type="text" placeholder="Benutzername"><br><br>
+
+  <label>Passwort:</label><br>
+  <input id="pw" type="password" placeholder="Passwort"><br><br>
+
+  <button type="submit">Login</button>
+</form>
+
+<script>
+(function() {
+  const params = new URLSearchParams(window.location.hash.substring(1));
+  const pw = params.get('pw');
+
+  if (pw) {
+    document.getElementById('pw').value = pw;
+
+    // URL bereinigen (damit Passwort nicht in der Leiste steht)
+    const clean = window.location.href.split('#')[0];
+    window.history.replaceState(null, '', clean);
+  }
+})();
+</script>
+
+</body>
+</html>
